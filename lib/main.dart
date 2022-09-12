@@ -1,3 +1,4 @@
+import 'package:cgpa_app/screens/input_gpa.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,9 +11,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      theme: ThemeData.dark().copyWith(
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xFF090c22),
+        ),
+        scaffoldBackgroundColor: const Color(0xFF090c22),
       ),
+      home: const InputGpa(),
     );
   }
 }

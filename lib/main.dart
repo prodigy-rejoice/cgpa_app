@@ -1,4 +1,4 @@
-import 'package:cgpa_app/screens/input_gpa.dart';
+import 'package:cgpa_app/screens/input_scores.dart';
 import 'package:flutter/material.dart';
 
 void main() {

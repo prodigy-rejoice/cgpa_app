@@ -11,13 +11,19 @@ class RoundedIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return RawMaterialButton(
       onPressed: onPress,
-      shape: const CircleBorder(),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(50.0),
+        side: const BorderSide(
+          width: 3,
+          color: Colors.deepOrange,
+        ),
+      ),
       fillColor: Colors.deepOrange,
       constraints: const BoxConstraints.tightFor(width: 50, height: 50),
       elevation: 1.0,
       child: Text(
         gpaCounter,
-        style: const TextStyle(fontSize: 18.0, color: Colors.white),
+        style: const TextStyle(fontSize: 20.0, color: Colors.white),
       ),
     );
   }

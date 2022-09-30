@@ -1,17 +1,17 @@
 import 'package:cgpa_app/utilities/reusableCard.dart';
 import 'package:flutter/material.dart';
 
-class GpaResult extends StatelessWidget {
-  const GpaResult({Key? key, this.gpaResult, this.interpretation})
+class UserCgpa extends StatelessWidget {
+  const UserCgpa({Key? key, this.cgpaResult, this.interpretation})
       : super(key: key);
-  final String? gpaResult;
+  final String? cgpaResult;
   final String? interpretation;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('GPA RESULT'),
+        title: const Text('CGPA RESULT'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -39,7 +39,7 @@ class GpaResult extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      gpaResult ?? '',
+                      cgpaResult ?? '',
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 90.0,

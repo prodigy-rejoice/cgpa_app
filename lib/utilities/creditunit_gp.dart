@@ -12,5 +12,3 @@ const List<String> creditUnits = [
 ];
 
 const List<String> gradePoints = ['A', 'B', 'C', 'D', 'E', 'F'];
-
-const List<String> numberGrades = ['1', '2', '3', '4', '5'];

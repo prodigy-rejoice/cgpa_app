@@ -1,11 +1,8 @@
-import 'dart:math';
-import 'package:collection/collection.dart';
-
 class CalculatorBrain {
   late final int? qualityPoint;
   late final int? totalQualityPoint;
-  final int creditUnit;
-  final int numberGradePoint;
+  final String creditUnit;
+  final int? numberGradePoint;
   late final double _gpa;
 
   CalculatorBrain({
@@ -34,7 +31,7 @@ class CalculatorBrain {
   }
 
   String calculateGPA() {
-    qualityPoint = creditUnit * numberGradePoint;
+    qualityPoint = (creditUnit * numberGradePoint!) as int?;
     // totalQualityPoint =
     return _gpa.toStringAsFixed(2);
   }

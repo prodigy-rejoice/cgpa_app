@@ -1,4 +1,5 @@
-import 'package:cgpa_app/screens/input_scores.dart';
+import 'package:cgpa_app/screens/auth.dart';
+import 'package:cgpa_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,13 +12,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: "CGPA Calculator",
       theme: ThemeData.dark().copyWith(
         appBarTheme: const AppBarTheme(
           backgroundColor: Color(0xFF090c22),
         ),
         scaffoldBackgroundColor: const Color(0xFF090c22),
       ),
-      home: const InputGpa(),
+      home: const UserAuth(),
     );
   }
 }

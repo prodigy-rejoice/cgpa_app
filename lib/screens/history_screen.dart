@@ -18,15 +18,36 @@ class History extends StatelessWidget {
             unselectedLabelColor: Colors.grey,
             tabs: [
               Tab(
+                icon: Icon(Icons.credit_score_outlined),
                 text: 'G.P.A Scores',
+                iconMargin: EdgeInsets.only(bottom: 10.0),
               ),
               Tab(
+                icon: Icon(Icons.calculate_outlined),
                 text: 'C.G.P.A Scores',
+                iconMargin: EdgeInsets.only(bottom: 10.0),
               ),
             ],
           ),
         ),
-        body: const TabBarView(children: []),
+        body: const TabBarView(
+          children: [
+            Center(
+                child: Text(
+              'This is Android Image Tab',
+
+              /// Index:0
+              style: TextStyle(fontSize: 32),
+            )),
+            Center(
+                child: Text(
+              'This is Radio Tab',
+
+              /// Index:1
+              style: TextStyle(fontSize: 32),
+            )),
+          ],
+        ),
       ),
     );
   }

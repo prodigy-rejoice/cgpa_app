@@ -24,3 +24,39 @@ class ReusableCard extends StatelessWidget {
     );
   }
 }
+
+class HomeViewButton extends StatelessWidget {
+  final Function() onPress;
+  final String title;
+  const HomeViewButton({
+    Key? key,
+    required this.onPress,
+    required this.title,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onPress,
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height * 0.07,
+        child: Container(
+          decoration: BoxDecoration(
+              color: const Color(0xffCEDCCE),
+              borderRadius: BorderRadius.circular(10.0)),
+          child: Center(
+            child: Text(
+              title,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                color: Color.fromRGBO(75, 89, 72, 1),
+                fontSize: 24.0,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

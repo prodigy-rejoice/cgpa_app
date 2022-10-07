@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "312782632203",
+    "project_id": "cgpa-calculator-a326a",
+    "storage_bucket": "cgpa-calculator-a326a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:312782632203:android:fd659c0ff7a9ad843b1e0e",
+        "android_client_info": {
+          "package_name": "com.rejoice.cgpa_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "312782632203-numaoa2qbkb7jjlc7oog4upv5ghh2h19.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUC92-UJ0vhkYB7JdgYUD0K8DyCvkg5dg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "312782632203-numaoa2qbkb7jjlc7oog4upv5ghh2h19.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

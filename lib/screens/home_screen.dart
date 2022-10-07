@@ -1,7 +1,8 @@
+import 'package:cgpa_app/screens/history_screen.dart';
 import 'package:cgpa_app/screens/input_cgpa_details_semester.dart';
-
 import 'package:cgpa_app/screens/input_gpa_course_details.dart';
 import 'package:cgpa_app/utilities/reusableCard.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,6 +13,27 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final _auth = FirebaseAuth.instance;
+  late User loggedInUser;
+
+  @override
+  void initState() {
+    super.initState();
+    getCurrentUser();
+  }
+
+  void getCurrentUser() async {
+    try {
+      final user = _auth.currentUser;
+      if (user != null) {
+        loggedInUser = user;
+        print(loggedInUser.email);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,103 +42,103 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Container(
           margin: const EdgeInsets.all(70.0),
           padding: const EdgeInsets.only(left: 20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: Stack(
             children: [
-              const Text(
-                '"SELECT',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Color.fromRGBO(75, 89, 72, 1),
-                    fontSize: 70.0,
-                    fontWeight: FontWeight.w900),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(top: 10.0),
-                child: Text(
-                  'YOUR PREFERRED',
-                  textAlign: TextAlign.center,
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 80.0),
+                child: const Text(
+                  "Hello User,",
                   style: TextStyle(
-                      color: Color.fromRGBO(75, 89, 72, 1),
+                      color: Colors.black87,
                       fontSize: 40.0,
-                      fontWeight: FontWeight.w500),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(top: 10.0),
-                child: Text(
-                  'OPTION',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Color.fromRGBO(75, 89, 72, 1),
-                    fontSize: 50.0,
-                    fontWeight: FontWeight.w700,
-                  ),
+                      fontWeight: FontWeight.w900),
                 ),
               ),
               Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ReusableCard(
-                    onPress: () {
-                      setState(() {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                const InputDetailsForCourseGPA(),
-                          ),
-                        );
-                      });
-                    },
-                    color: const Color(0xffCEDCCE),
-                    cardChild: const Text(
-                      'G.P.A (Semester)',
+                  const Text(
+                    '"SELECT',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Color.fromRGBO(75, 89, 72, 1),
+                        fontSize: 70.0,
+                        fontWeight: FontWeight.w900),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 10.0),
+                    child: Text(
+                      'YOUR PREFERRED',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Color.fromRGBO(75, 89, 72, 1),
+                          fontSize: 40.0,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 10.0, bottom: 15.0),
+                    child: Text(
+                      'OPTION',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Color.fromRGBO(75, 89, 72, 1),
-                        fontSize: 22.0,
-                        fontWeight: FontWeight.w400,
+                        fontSize: 50.0,
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 30.0,
-                  ),
-                  ReusableCard(
-                    onPress: () {
-                      setState(() {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return const InputDetailsForSemesterCGPA();
-                        }));
-                      });
-                    },
-                    color: const Color(0xffCEDCCE),
-                    cardChild: const Text(
-                      'C.G.P.A (Final)',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Color.fromRGBO(75, 89, 72, 1),
-                        fontSize: 22.0,
-                        fontWeight: FontWeight.w400,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      HomeViewButton(
+                        title: 'G.P.A (Semester)',
+                        onPress: () {
+                          setState(() {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const InputDetailsForCourseGPA(),
+                              ),
+                            );
+                          });
+                        },
                       ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 30.0,
-                  ),
-                  const ReusableCard(
-                    color: Color(0xffCEDCCE),
-                    cardChild: Text(
-                      'See History',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Color.fromRGBO(75, 89, 72, 1),
-                        fontSize: 22.0,
-                        fontWeight: FontWeight.w400,
+                      const SizedBox(
+                        height: 30.0,
                       ),
-                    ),
+                      HomeViewButton(
+                        title: 'C.G.P.A (Final)',
+                        onPress: () {
+                          setState(() {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const InputDetailsForSemesterCGPA(),
+                              ),
+                            );
+                          });
+                        },
+                      ),
+                      const SizedBox(
+                        height: 30.0,
+                      ),
+                      HomeViewButton(
+                        title: 'See History',
+                        onPress: () {
+                          setState(() {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const History(),
+                              ),
+                            );
+                          });
+                        },
+                      ),
+                    ],
                   ),
                 ],
               ),
